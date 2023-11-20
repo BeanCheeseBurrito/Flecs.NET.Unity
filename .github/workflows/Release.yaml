@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            3.1.x
+            5.0.x
+            6.0.x
+            7.0.x
+            8.0.x
+
+      - name: Build Flecs.NET
+        shell: bash
+        run: |
+          mkdir .temp
+          git clone --depth 1 --recursive --shallow-submodules https://github.com/BeanCheeseBurrito/Flecs.NET .temp/Flecs.NET
+          cd .temp/Flecs.NET
+          dotnet restore
+          dotnet build --property:Deterministic=true -c Debug
+          dotnet build --property:Deterministic=true -c Release
+
+      - name: Prepare Unity Package
+        shell: bash
+        run: |
+          rm -rf ./*
+          rsync -a .temp/Flecs.NET/upm/ .
+          rm -rf .temp
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: automated-pull-request
+          title: Update Unity Package
