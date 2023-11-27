@@ -1094,6 +1094,13 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:Flecs.NET.Core.Cursor.SetId(System.UInt64)">
+            <summary>
+                Set (component) id value.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
         <member name="M:Flecs.NET.Core.Cursor.SetNull">
             <summary>
                 Set null value.
@@ -8647,6 +8654,14 @@
             <summary>
                 Resets a types information.
             </summary>
+        </member>
+        <member name="M:Flecs.NET.Core.Type`1.NativeLayout(System.Int32@,System.Int32@,System.Boolean)">
+            <summary>
+                Calculates the size of the type.
+            </summary>
+            <param name="size"></param>
+            <param name="alignment"></param>
+            <param name="allowTag"></param>
         </member>
         <member name="M:Flecs.NET.Core.Type`1.AlignOf">
             <summary>
