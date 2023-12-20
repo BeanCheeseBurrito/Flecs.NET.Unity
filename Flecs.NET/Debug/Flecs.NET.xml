@@ -1189,6 +1189,20 @@
                 A static class for storing ECS related globals.
             </summary>
         </member>
+        <member name="M:Flecs.NET.Core.Ecs.Assert(System.Boolean,System.String)">
+            <summary>
+                Debug assert.
+            </summary>
+            <param name="condition"></param>
+            <param name="message"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Flecs.NET.Core.Ecs.Error(System.String)">
+            <summary>
+                Debug fail.
+            </summary>
+            <param name="message"></param>
+        </member>
         <member name="T:Flecs.NET.Core.Ecs.Log">
             <summary>
                 Static class for flecs logging functions.
