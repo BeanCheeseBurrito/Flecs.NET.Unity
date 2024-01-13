@@ -13990,6 +13990,15 @@
             <param name="world"></param>
             <returns></returns>
         </member>
+        <member name="M:Flecs.NET.Utilities.Macros.TypeMatchesId``1(Flecs.NET.Bindings.Native.ecs_world_t*,System.UInt64)">
+            <summary>
+                Test if a type id matches the type of another id.
+            </summary>
+            <param name="world"></param>
+            <param name="id"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="M:Flecs.NET.Utilities.Macros.TableLock(Flecs.NET.Bindings.Native.ecs_world_t*,Flecs.NET.Bindings.Native.ecs_table_t*)">
             <summary>
                 Locks a table.
