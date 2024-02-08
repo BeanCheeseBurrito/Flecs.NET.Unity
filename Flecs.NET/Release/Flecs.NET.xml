@@ -195,6 +195,27 @@
             </summary>
             <param name="enumerable"></param>
         </member>
+        <member name="M:Flecs.NET.Collections.NativeList`1.AddRange(`0@,System.Int32)">
+            <summary>
+               Adds a span of items starting at the provided managed reference to the end of the <see cref="T:Flecs.NET.Collections.NativeList`1"/>.
+            </summary>
+            <param name="start"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:Flecs.NET.Collections.NativeList`1.AddRange(`0*,System.Int32)">
+            <summary>
+               Adds a span of items starting at the pointer to the end of the <see cref="T:Flecs.NET.Collections.NativeList`1"/>.
+            </summary>
+            <param name="start"></param>
+            <param name="count"></param>
+        </member>
+        <member name="M:Flecs.NET.Collections.NativeList`1.AddRepeated(`0,System.Int32)">
+            <summary>
+                Adds the provided item a repeated number of times to the end of the <see cref="T:Flecs.NET.Collections.NativeList`1"/>.
+            </summary>
+            <param name="item"></param>
+            <param name="count"></param>
+        </member>
         <member name="M:Flecs.NET.Collections.NativeList`1.Clear">
             <summary>
                 Sets the count of the list to 0.
@@ -1783,6 +1804,11 @@
         <member name="T:Flecs.NET.Core.Ecs.OrderByAction">
             <summary>
                 OrderBy action.
+            </summary>
+        </member>
+        <member name="T:Flecs.NET.Core.Ecs.WorldCallback">
+            <summary>
+                A callback that takes a reference to a world.
             </summary>
         </member>
         <member name="F:Flecs.NET.Core.Ecs.InOutDefault">
@@ -9705,11 +9731,17 @@
             </summary>
             <param name="entity"></param>
         </member>
-        <member name="M:Flecs.NET.Core.Routine.SetTickSource(Flecs.NET.Core.Timer)">
+        <member name="M:Flecs.NET.Core.Routine.SetTickSource(Flecs.NET.Core.TimerEntity)">
             <summary>
                 Sets the external tick source.
             </summary>
-            <param name="timer"></param>
+            <param name="timerEntity"></param>
+        </member>
+        <member name="M:Flecs.NET.Core.Routine.SetTickSource``1">
+            <summary>
+                Sets the external tick source.
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="M:Flecs.NET.Core.Routine.op_Implicit(Flecs.NET.Core.Routine)~System.UInt64">
             <summary>
@@ -9849,6 +9881,13 @@
                 Set tick source.
             </summary>
             <param name="tickSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flecs.NET.Core.RoutineBuilder.TickSource``1">
+            <summary>
+                Set tick source.
+            </summary>
+            <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
         <member name="M:Flecs.NET.Core.RoutineBuilder.Ctx(System.Void*)">
@@ -11329,69 +11368,69 @@
             <param name="right"></param>
             <returns></returns>
         </member>
-        <member name="T:Flecs.NET.Core.Timer">
+        <member name="T:Flecs.NET.Core.TimerEntity">
             <summary>
                 Timer struct.
             </summary>
         </member>
-        <member name="P:Flecs.NET.Core.Timer.Entity">
+        <member name="P:Flecs.NET.Core.TimerEntity.Entity">
             <summary>
                 A reference to the entity.
             </summary>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.#ctor(System.UInt64)">
+        <member name="M:Flecs.NET.Core.TimerEntity.#ctor(System.UInt64)">
             <summary>
                 Creates a timer from the entity id.
             </summary>
             <param name="id"></param>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.#ctor(Flecs.NET.Bindings.Native.ecs_world_t*)">
+        <member name="M:Flecs.NET.Core.TimerEntity.#ctor(Flecs.NET.Bindings.Native.ecs_world_t*)">
             <summary>
                 Creates a timer for the provided world.
             </summary>
             <param name="world"></param>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.#ctor(Flecs.NET.Bindings.Native.ecs_world_t*,System.UInt64)">
+        <member name="M:Flecs.NET.Core.TimerEntity.#ctor(Flecs.NET.Bindings.Native.ecs_world_t*,System.UInt64)">
             <summary>
                 Creates a timer from the provided world and id.
             </summary>
             <param name="world"></param>
             <param name="id"></param>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.#ctor(Flecs.NET.Bindings.Native.ecs_world_t*,System.String)">
+        <member name="M:Flecs.NET.Core.TimerEntity.#ctor(Flecs.NET.Bindings.Native.ecs_world_t*,System.String)">
             <summary>
                 Creates a timer from the provided world and entity name.
             </summary>
             <param name="world"></param>
             <param name="name"></param>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Interval(System.Single)">
+        <member name="M:Flecs.NET.Core.TimerEntity.Interval(System.Single)">
             <summary>
                 Sets the interval.
             </summary>
             <param name="interval"></param>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Interval">
+        <member name="M:Flecs.NET.Core.TimerEntity.Interval">
             <summary>
                 Gets the interval.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Timeout(System.Single)">
+        <member name="M:Flecs.NET.Core.TimerEntity.Timeout(System.Single)">
             <summary>
                 Sets the timeout.
             </summary>
             <param name="timeout"></param>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Timeout">
+        <member name="M:Flecs.NET.Core.TimerEntity.Timeout">
             <summary>
                 Gets the timeout.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Rate(System.Int32,System.UInt64)">
+        <member name="M:Flecs.NET.Core.TimerEntity.Rate(System.Int32,System.UInt64)">
             <summary>
                 Sets the rate.
             </summary>
@@ -11399,53 +11438,67 @@
             <param name="tickSource"></param>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Start">
+        <member name="M:Flecs.NET.Core.TimerEntity.Start">
             <summary>
                 Starts the timer.
             </summary>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Stop">
+        <member name="M:Flecs.NET.Core.TimerEntity.Stop">
             <summary>
                 Stops the timer.
             </summary>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.ToString">
+        <member name="M:Flecs.NET.Core.TimerEntity.op_Implicit(Flecs.NET.Core.TimerEntity)~System.UInt64">
+            <summary>
+                Converts a <see cref="T:Flecs.NET.Core.TimerEntity"/> instance to its entity id.
+            </summary>
+            <param name="timerEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flecs.NET.Core.TimerEntity.ToUInt64(Flecs.NET.Core.TimerEntity)">
+            <summary>
+                Converts an<see cref="T:Flecs.NET.Core.TimerEntity"/> instance to its entity id.
+            </summary>
+            <param name="timerEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flecs.NET.Core.TimerEntity.ToString">
             <summary>
                 Returns the entity's name if it has one, otherwise return its id.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Equals(Flecs.NET.Core.Timer)">
+        <member name="M:Flecs.NET.Core.TimerEntity.Equals(Flecs.NET.Core.TimerEntity)">
             <summary>
-                Checks if two <see cref="T:Flecs.NET.Core.Timer"/> instances are equal.
+                Checks if two <see cref="T:Flecs.NET.Core.TimerEntity"/> instances are equal.
             </summary>
             <param name="other"></param>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.Equals(System.Object)">
+        <member name="M:Flecs.NET.Core.TimerEntity.Equals(System.Object)">
             <summary>
-                Checks if two <see cref="T:Flecs.NET.Core.Timer"/> instances are equal.
+                Checks if two <see cref="T:Flecs.NET.Core.TimerEntity"/> instances are equal.
             </summary>
             <param name="obj"></param>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.GetHashCode">
+        <member name="M:Flecs.NET.Core.TimerEntity.GetHashCode">
             <summary>
-                Returns the hash code of the <see cref="T:Flecs.NET.Core.Timer"/>.
+                Returns the hash code of the <see cref="T:Flecs.NET.Core.TimerEntity"/>.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.op_Equality(Flecs.NET.Core.Timer,Flecs.NET.Core.Timer)">
+        <member name="M:Flecs.NET.Core.TimerEntity.op_Equality(Flecs.NET.Core.TimerEntity,Flecs.NET.Core.TimerEntity)">
             <summary>
-                Checks if two <see cref="T:Flecs.NET.Core.Timer"/> instances are equal.
+                Checks if two <see cref="T:Flecs.NET.Core.TimerEntity"/> instances are equal.
             </summary>
             <param name="left"></param>
             <param name="right"></param>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.Timer.op_Inequality(Flecs.NET.Core.Timer,Flecs.NET.Core.Timer)">
+        <member name="M:Flecs.NET.Core.TimerEntity.op_Inequality(Flecs.NET.Core.TimerEntity,Flecs.NET.Core.TimerEntity)">
             <summary>
-                Checks if two <see cref="T:Flecs.NET.Core.Timer"/> instances are not equal.
+                Checks if two <see cref="T:Flecs.NET.Core.TimerEntity"/> instances are not equal.
             </summary>
             <param name="left"></param>
             <param name="right"></param>
@@ -12894,6 +12947,13 @@
             </summary>
             <param name="func"></param>
         </member>
+        <member name="M:Flecs.NET.Core.World.Defer(Flecs.NET.Core.Ecs.WorldCallback)">
+            <summary>
+                Defer all operations called in function. If the world is already in
+                deferred mode, do nothing.
+            </summary>
+            <param name="callback"></param>
+        </member>
         <member name="M:Flecs.NET.Core.World.DeferSuspend">
             <summary>
                 Suspend deferring operations.
@@ -13320,6 +13380,13 @@
                 Creates a timer.
             </summary>
             <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flecs.NET.Core.World.Timer``1">
+            <summary>
+                Creates a timer.
+            </summary>
+            <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
         <member name="M:Flecs.NET.Core.World.RandomizeTimers">
