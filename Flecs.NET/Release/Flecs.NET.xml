@@ -2180,7 +2180,7 @@
                 Reference to <see cref="P:Flecs.NET.Bindings.flecs.EcsEmpty"/>.
             </summary>
         </member>
-        <member name="P:Flecs.NET.Core.Ecs.MonitorId">
+        <member name="P:Flecs.NET.Core.Ecs.Monitor">
             <summary>
                 Reference to <see cref="P:Flecs.NET.Bindings.flecs.EcsMonitor"/>.
             </summary>
@@ -2588,6 +2588,41 @@
         <member name="P:Flecs.NET.Core.Ecs.Quantity">
             <summary>
                 Reference to <see cref="P:Flecs.NET.Bindings.flecs.EcsQuantity"/>.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryMatchPrefab">
+            <summary>
+                Query must match prefabs.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryMatchDisabled">
+            <summary>
+                Query must match disabled entities.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryMatchEmptyTables">
+            <summary>
+                Query must match empty tables.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryNoData">
+            <summary>
+                Query won't provide component data.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryIsInstanced">
+            <summary>
+                Query iteration is always instanced.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryAllowUnresolvedByName">
+            <summary>
+                Query may have unresolved entity identifiers.
+            </summary>
+        </member>
+        <member name="F:Flecs.NET.Core.Ecs.QueryTableOnly">
+            <summary>
+                Query only returns whole tables (ignores toggle/member fields).
             </summary>
         </member>
         <member name="P:Flecs.NET.Core.Ecs.StripFileLocalTypeNameGuid">
