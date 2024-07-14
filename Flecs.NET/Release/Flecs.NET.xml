@@ -2805,6 +2805,11 @@
                 Run delegate callback.
             </summary>
         </member>
+        <member name="T:Flecs.NET.Core.Ecs.OsApiLog">
+            <summary>
+                Os api log callback.
+            </summary>
+        </member>
         <member name="T:Flecs.NET.Core.Ecs.Doc">
             <summary>
                 Utilities for documenting entities, components and systems.
@@ -3178,20 +3183,39 @@
             <typeparam name="T">The module type.</typeparam>
             <returns>The module entity.</returns>
         </member>
-        <member name="P:Flecs.NET.Core.Ecs.OsAbortNative">
+        <member name="T:Flecs.NET.Core.Ecs.Os">
             <summary>
-                Original os api abort function pointer if overridden.
+                Static class for overriding the os api.
             </summary>
         </member>
-        <member name="P:Flecs.NET.Core.Ecs.IsOsApiOverridden">
-            <summary>
-                Whether or not os api is overridden.
-            </summary>
-        </member>
-        <member name="M:Flecs.NET.Core.Ecs.OverrideOsAbort">
+        <member name="M:Flecs.NET.Core.Ecs.Os.OverrideOsApi">
             <summary>
                 Override the default os api abort function to log C# stack traces.
             </summary>
+        </member>
+        <member name="M:Flecs.NET.Core.Ecs.Os.SetAbort(System.Action)">
+            <summary>
+                Sets os api abort callback.
+            </summary>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:Flecs.NET.Core.Ecs.Os.SetLog(Flecs.NET.Core.Ecs.OsApiLog)">
+            <summary>
+                Sets the os api log callback.
+            </summary>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:Flecs.NET.Core.Ecs.Os.SetAbort(System.IntPtr)">
+            <summary>
+                Sets os api abort callback.
+            </summary>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:Flecs.NET.Core.Ecs.Os.SetLog(System.IntPtr)">
+            <summary>
+                Sets the os api log callback.
+            </summary>
+            <param name="callback">The callback.</param>
         </member>
         <member name="T:Flecs.NET.Core.Ecs.Alerts">
             <summary>
@@ -14592,18 +14616,17 @@
             </summary>
             <param name="handle">The world handle.</param>
         </member>
-        <member name="M:Flecs.NET.Core.World.Create(System.Boolean)">
+        <member name="M:Flecs.NET.Core.World.Create">
             <summary>
                 Creates a flecs world that is owned.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flecs.NET.Core.World.Create(Flecs.NET.Bindings.flecs.ecs_world_t*,System.Boolean)">
+        <member name="M:Flecs.NET.Core.World.Create(Flecs.NET.Bindings.flecs.ecs_world_t*)">
             <summary>
                 Creates a flecs world from an <see cref="T:Flecs.NET.Bindings.flecs.ecs_world_t"/> pointer that is not owned.
             </summary>
             <param name="world">A C world.</param>
-            <param name="overrideOsAbort"></param>
             <returns>A newly created world.</returns>
         </member>
         <member name="M:Flecs.NET.Core.World.Create(System.String[])">
