@@ -9489,7 +9489,7 @@
         </member>
         <member name="M:Flecs.NET.Core.PipelineBuilder.Dispose">
             <summary>
-                Disposes the pipeline builder. This should be called if the rule builder
+                Disposes the pipeline builder. This should be called if the pipeline builder
                 will be discarded and .Build() isn't called.
             </summary>
         </member>
@@ -17537,6 +17537,17 @@
             <param name="recursive">If looking up as path, recursively traverse up the tree.</param>
             <param name="entity">The entity if found, else 0.</param>
             <returns>True if the entity was found, else false.</returns>
+        </member>
+        <member name="M:Flecs.NET.Core.World.DeleteEmptyTables(System.UInt64,System.UInt16,System.UInt16,System.Int32,System.Double)">
+            <summary>
+                Cleanup empty tables.
+            </summary>
+            <param name="id">Optional component filter for the tables to evaluate.</param>
+            <param name="clearGeneration">Free table data when generation > clear_generation.</param>
+            <param name="deleteGeneration">Delete table when generation > delete_generation.</param>
+            <param name="minIdCount">Minimum number of component ids the table should have.</param>
+            <param name="timeBudgetSeconds">Amount of time operation is allowed to spend.</param>
+            <returns>Number of deleted tables.</returns>
         </member>
         <member name="T:Flecs.NET.Core.WorldInfo">
             <summary>
